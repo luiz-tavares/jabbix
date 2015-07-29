@@ -31,7 +31,7 @@ class SocketProcessor implements Runnable
 {
 	private static final Logger logger = LoggerFactory.getLogger(SocketProcessor.class);
 
-	private Socket socket;
+	private final Socket socket;
 
 	public SocketProcessor(Socket socket)
 	{
