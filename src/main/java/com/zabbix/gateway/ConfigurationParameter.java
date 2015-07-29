@@ -25,19 +25,9 @@ import java.net.InetAddress;
 class ConfigurationParameter
 {
 	public static enum ParameterType {
-		INTEGER(0),
-		INETADDRESS(1),
-		FILE(2);
-
-		private final int ordinal;
-
-		ParameterType(int ordinal) {
-			this.ordinal = ordinal;
-		}
-
-		public int getOrdinal() {
-			return this.ordinal;
-		}
+		INTEGER,
+		INETADDRESS,
+		FILE;
 
 	}
 
