@@ -19,35 +19,28 @@
 
 package com.zabbix.gateway;
 
-class IntegerValidator implements InputValidator
-{
-	private int lo;
-	private int hi;
+class IntegerValidator implements InputValidator {
+    private final int lowerBound;
+    private final int upperBound;
 
-	public IntegerValidator(int lo, int hi)
-	{
-		if (lo > hi)
-			throw new IllegalArgumentException("bad validation bounds: " + lo + " and " + hi);
+    public IntegerValidator(final int lowerBound, final int upperBound) {
+        if (lowerBound > upperBound)
+            throw new IllegalArgumentException("bad validation bounds: " + lowerBound + " and " + upperBound);
 
-		this.lo = lo;
-		this.hi = hi;
-	}
+        this.lowerBound = lowerBound;
+        this.upperBound = upperBound;
+    }
 
-	public boolean validate(Object value)
-	{
-		if (value instanceof Integer)
-		{
-			Integer integer = (Integer)value;
+    public boolean validate(Object value) {
+        if (!(value instanceof Integer)) {
+            return false;
+        }
 
-			if (!(Integer.valueOf(lo).compareTo(integer) <= 0))
-				return false;
+        final int integer = ((Integer) value).intValue();
+        if (integer < lowerBound) {
+            return false;
+        }
 
-			if (!(integer.compareTo(Integer.valueOf(hi)) <= 0))
-				return false;
-
-			return true;
-		}
-		else
-			return false;
-	}
+        return integer <= upperBound;
+    }
 }

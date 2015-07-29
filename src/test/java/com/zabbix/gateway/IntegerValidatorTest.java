@@ -29,11 +29,11 @@ public class IntegerValidatorTest
 	{
 		InputValidator validator = new IntegerValidator(3, 7);
 
-		assertFalse(validator.validate(Integer.valueOf(2)));
-		assertTrue(validator.validate(Integer.valueOf(3)));
-		assertTrue(validator.validate(Integer.valueOf(5)));
-		assertTrue(validator.validate(Integer.valueOf(7)));
-		assertFalse(validator.validate(Integer.valueOf(8)));
+		assertFalse("(3,7) should return false for 2",validator.validate(Integer.valueOf(2)));
+		assertTrue("(3,7) should return true for 3", validator.validate(Integer.valueOf(3)));
+		assertTrue("(3,7) should return true for 5", validator.validate(Integer.valueOf(5)));
+		assertTrue("(3,7) should return false for 7",validator.validate(Integer.valueOf(7)));
+		assertFalse("(3,7) should return true for 8",validator.validate(Integer.valueOf(8)));
 
 	}
 
