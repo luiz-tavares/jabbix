@@ -4,7 +4,7 @@ repositories {
 }
 
 dependencies {
-    compile files('./src/main/lib/android-json-4.3_r3.1.jar')
+    compile files('./src/zabbix_java/lib/android-json-4.3_r3.1.jar')
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.6.1'
     compile group: 'ch.qos.logback', name: 'logback-core', version: '0.9.27'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '0.9.27'
