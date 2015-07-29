@@ -21,6 +21,7 @@ package com.zabbix.gateway;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.Inet4Address;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +62,7 @@ class ConfigurationManager
 						}
 					}
 				}),
-		new ConfigurationParameter(LISTEN_IP, ConfigurationParameter.ParameterType.INETADDRESS, null,
+		new ConfigurationParameter(LISTEN_IP, ConfigurationParameter.ParameterType.INETADDRESS, Inet4Address.getLoopbackAddress(),
 				null,
 				null),
 		new ConfigurationParameter(LISTEN_PORT, ConfigurationParameter.ParameterType.INTEGER, 10052,
