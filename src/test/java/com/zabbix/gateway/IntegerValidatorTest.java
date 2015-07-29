@@ -34,6 +34,7 @@ public class IntegerValidatorTest
 		assertTrue(validator.validate(Integer.valueOf(5)));
 		assertTrue(validator.validate(Integer.valueOf(7)));
 		assertFalse(validator.validate(Integer.valueOf(8)));
+
 	}
 
 	@Test
