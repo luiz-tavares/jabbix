@@ -37,7 +37,7 @@ class ConfigurationManager
 
 	private static ConfigurationParameter[] parameters =
 	{
-		new ConfigurationParameter(PID_FILE, ConfigurationParameter.TYPE_FILE, null,
+		new ConfigurationParameter(PID_FILE, ConfigurationParameter.ParameterType.FILE, null,
 				null,
 				new PostInputValidator()
 				{
@@ -61,16 +61,16 @@ class ConfigurationManager
 						}
 					}
 				}),
-		new ConfigurationParameter(LISTEN_IP, ConfigurationParameter.TYPE_INETADDRESS, null,
+		new ConfigurationParameter(LISTEN_IP, ConfigurationParameter.ParameterType.INETADDRESS, null,
 				null,
 				null),
-		new ConfigurationParameter(LISTEN_PORT, ConfigurationParameter.TYPE_INTEGER, 10052,
+		new ConfigurationParameter(LISTEN_PORT, ConfigurationParameter.ParameterType.INTEGER, 10052,
 				new IntegerValidator(1024, 32767),
 				null),
-		new ConfigurationParameter(START_POLLERS, ConfigurationParameter.TYPE_INTEGER, 5,
+		new ConfigurationParameter(START_POLLERS, ConfigurationParameter.ParameterType.INTEGER, 5,
 				new IntegerValidator(1, 1000),
 				null),
-		new ConfigurationParameter(TIMEOUT, ConfigurationParameter.TYPE_INTEGER, 3,
+		new ConfigurationParameter(TIMEOUT, ConfigurationParameter.ParameterType.INTEGER, 3,
 				new IntegerValidator(1, 30),
 				null)
 	};

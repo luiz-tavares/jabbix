@@ -24,17 +24,30 @@ import java.net.InetAddress;
 
 class ConfigurationParameter
 {
-	public static final int TYPE_INTEGER = 0;
-	public static final int TYPE_INETADDRESS = 1;
-	public static final int TYPE_FILE = 2;
+	public static enum ParameterType {
+		INTEGER(0),
+		INETADDRESS(1),
+		FILE(2);
 
-	private String name;
-	private int type;
+		private final int ordinal;
+
+		ParameterType(int ordinal) {
+			this.ordinal = ordinal;
+		}
+
+		public int getOrdinal() {
+			return this.ordinal;
+		}
+
+	}
+
+	private final String name;
+	private ParameterType type;
 	private Object value;
 	private InputValidator validator;
 	private PostInputValidator postValidator;
 
-	public ConfigurationParameter(String name, int type, Object defaultValue, InputValidator validator, PostInputValidator postValidator)
+	public ConfigurationParameter(String name,ParameterType type, Object defaultValue, InputValidator validator, PostInputValidator postValidator)
 	{
 		this.name = name;
 		this.type = type;
@@ -48,11 +61,6 @@ class ConfigurationParameter
 		return name;
 	}
 
-	public int getType()
-	{
-		return type;
-	}
-
 	public Object getValue()
 	{
 		return value;
@@ -60,19 +68,19 @@ class ConfigurationParameter
 
 	public void setValue(String text)
 	{
-		Object userValue = null;
+		 Object userValue = null;
 
 		try
 		{
 			switch (type)
 			{
-				case TYPE_INTEGER:
+				case INTEGER:
 					userValue = Integer.valueOf(text);
 					break;
-				case TYPE_INETADDRESS:
+				case INETADDRESS:
 					userValue = InetAddress.getByName(text);
 					break;
-				case TYPE_FILE:
+				case FILE:
 					userValue = new File(text);
 					break;
 			}
